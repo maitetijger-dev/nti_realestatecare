@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README.md – NTI eindopdracht Real Estate Care
 ## Over dit prototype
 
