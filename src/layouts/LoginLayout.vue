@@ -4,7 +4,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
 
-        <q-img
+        <img
           src="/icons/logo_REC_wit.png"
           alt="RealEstateCare logo"
           width="32px"

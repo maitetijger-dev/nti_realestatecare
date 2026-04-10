@@ -6,7 +6,7 @@
       <q-toolbar>
 
         <!-- Logo -->
-        <q-img
+        <img
           src="/icons/logo_REC_wit.png"
           alt="RealEstateCare logo"
           width="32px"
@@ -21,7 +21,7 @@
       </q-toolbar>
     </q-header>
 
-    <!-- PAGINA-INHOUD -->
+    <!-- INHOUD -->
     <q-page-container>
       <router-view />
     </q-page-container>
