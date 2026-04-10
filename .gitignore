@@ -1,33 +1,47 @@
+# macOS / Windows
 .DS_Store
 .thumbs.db
-node_modules
 
-# Quasar core related directories
-.quasar
-/dist
+# Node
+node_modules/
+
+# Quasar core
+.quasar/
+dist/
+dist-spa/
+dist-ssr/
+dist-pwa/
+dist-capacitor/
+dist-electron/
+dist-bex/
+
+# Quasar temporary compiled config
 /quasar.config.*.temporary.compiled*
 
-# Cordova related directories and files
+# Cordova
 /src-cordova/node_modules
 /src-cordova/platforms
 /src-cordova/plugins
 /src-cordova/www
 
-# Capacitor related directories and files
+# Capacitor
 /src-capacitor/www
 /src-capacitor/node_modules
 
-# Log files
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Editor directories and files
-.idea
+# Editors
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 
-# local .env files
+# Environment files
+.env
+.env.*
 .env.local*

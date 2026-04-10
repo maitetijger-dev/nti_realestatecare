@@ -7,7 +7,7 @@
 
         <!-- Logo -->
         <q-img
-          src="src/assets/logo REC_wit.png"
+          src="/icons/logo_REC_wit.png"
           alt="RealEstateCare logo"
           width="32px"
           class="q-mr-sm cursor-pointer"

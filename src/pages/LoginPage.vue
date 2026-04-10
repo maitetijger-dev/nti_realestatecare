@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md flex flex-center">
 
-    <!-- Stap 1: Inloggen -->
+    <!-- INLOGGEN -->
     <div v-if="step === 1" class="q-pa-md q-card q-card--bordered" style="width: 350px;">
       <div class="text-h6 q-mb-md">Inloggen</div>
 
@@ -11,7 +11,7 @@
       <q-btn label="Volgende" color="primary" class="full-width" @click="handleLogin" />
     </div>
 
-    <!-- Stap 2: 2FA code -->
+    <!-- 2FA -->
     <div v-else class="q-pa-md q-card q-card--bordered" style="width: 350px;">
       <div class="text-h6 q-mb-md">Bevestig je identiteit</div>
       <div class="text-body2 q-mb-md">
