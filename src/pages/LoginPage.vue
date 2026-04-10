@@ -1,37 +1,27 @@
 <template>
-  <q-page class="flex flex-center bg-grey-2">
+  <q-page class="q-pa-md flex flex-center">
 
-    <q-card class="q-pa-lg" style="width: 350px; max-width: 90%;">
-      <q-card-section>
-        <div class="text-h6 text-center q-mb-md">Inloggen</div>
+    <!-- Stap 1: Inloggen -->
+    <div v-if="step === 1" class="q-pa-md q-card q-card--bordered" style="width: 350px;">
+      <div class="text-h6 q-mb-md">Inloggen</div>
 
-        <q-input
-          v-model="email"
-          label="E-mail"
-          type="email"
-          outlined
-          dense
-          class="q-mb-md"
-        />
+      <q-input v-model="email" label="E-mail" filled class="q-mb-md" />
+      <q-input v-model="password" label="Wachtwoord" type="password" filled class="q-mb-md" />
 
-        <q-input
-          v-model="password"
-          label="Wachtwoord"
-          type="password"
-          outlined
-          dense
-          class="q-mb-lg"
-        />
+      <q-btn label="Volgende" color="primary" class="full-width" @click="handleLogin" />
+    </div>
 
-        <q-btn
-          label="Inloggen"
-          color="primary"
-          unelevated
-          class="full-width"
-          @click="login"
-        />
-      </q-card-section>
-    </q-card>
+    <!-- Stap 2: 2FA code -->
+    <div v-else class="q-pa-md q-card q-card--bordered" style="width: 350px;">
+      <div class="text-h6 q-mb-md">Bevestig je identiteit</div>
+      <div class="text-body2 q-mb-md">
+        Vul de 6-cijferige code in die naar je is verstuurd. (prototype code = 123456)
+      </div>
+
+      <q-input v-model="code" label="Bevestigingscode" filled class="q-mb-md" maxlength="6" />
+
+      <q-btn label="Bevestigen" color="primary" class="full-width" @click="verify" />
+    </div>
 
   </q-page>
 </template>
@@ -41,18 +31,26 @@ import { ref } from 'vue'
 import { useAuthStore } from 'src/stores/auth'
 import { useRouter } from 'vue-router'
 
+const auth = useAuthStore()
+const router = useRouter()
+
+const step = ref(1)
 const email = ref('')
 const password = ref('')
-const router = useRouter()
-const auth = useAuthStore()
+const code = ref('')
 
-function login() {
-  const ok = auth.login(email.value, password.value)
-
+function handleLogin() {
+  const ok = auth.startLogin(email.value, password.value)
   if (ok) {
-    router.push('/')
-  } else {
-    alert('Ongeldige login (simulatie)')
+    step.value = 2
+  }
+}
+
+function verify() {
+  const ok = auth.verifyCode(code.value)
+  if (ok) {
+    router.push('/')   // doorgaan naar home/dashboard
   }
 }
 </script>
+
